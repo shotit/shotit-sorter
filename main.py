@@ -46,7 +46,7 @@ class Rearranger:
         self.length = len(candidates)
         candidateVectors = np.empty([self.length, 4096])
 
-        def vetorize_remote_image(index):
+        def vectorize_remote_image(index):
             url = candidates[index]["image"]
             res = request.urlopen(url).read()
             img = Image.open(BytesIO(res)).resize((224, 224))
@@ -62,7 +62,7 @@ class Rearranger:
                 futures = [
                     loop.run_in_executor(
                         executor,
-                        vetorize_remote_image,
+                        vectorize_remote_image,
                         i
                     )
                     for i in range(self.length)

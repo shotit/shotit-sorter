@@ -114,7 +114,7 @@ app = FastAPI()
 
 
 @app.post("/rearrange")
-async def read_root(
+async def rearrange(
     candidates: str = Form(),
     target: UploadFile = File()
 ):

@@ -128,4 +128,5 @@ async def rearrange(
             "result": result,
         }
     except Exception as e:
+        print(f"Error: \n{e}")
         raise HTTPException(status_code=500, detail=f"Error: \n{e}")

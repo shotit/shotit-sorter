@@ -1,6 +1,6 @@
 import numpy as np
 from tensorflow import keras
-from fastapi import FastAPI, File, Form, UploadFile
+from fastapi import FastAPI, File, Form, UploadFile, HTTPException
 from PIL import Image
 from urllib import request
 from io import BytesIO
@@ -118,11 +118,14 @@ async def rearrange(
     candidates: str = Form(),
     target: UploadFile = File()
 ):
-    candidates = json.loads(candidates)
-    rearranger.faiss_index(candidates["candidates"])
-    target_content = await target.read()
-    result = rearranger.faiss_search(target_content)
+    try:
+        candidates = json.loads(candidates)
+        rearranger.faiss_index(candidates["candidates"])
+        target_content = await target.read()
+        result = rearranger.faiss_search(target_content)
 
-    return {
-        "result": result,
-    }
+        return {
+            "result": result,
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error: \n{e}")

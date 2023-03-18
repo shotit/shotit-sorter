@@ -7,6 +7,7 @@ from io import BytesIO
 import faiss
 import json
 import copy
+import time
 import asyncio
 import concurrent.futures
 import nest_asyncio
@@ -129,11 +130,13 @@ async def rearrange(
     target: UploadFile = File()
 ):
     try:
+        start_time = time.time()
         candidates = json.loads(candidates)
         rearranger.faiss_index(candidates["candidates"])
         target_content = await target.read()
         result = rearranger.faiss_search(target_content)
 
+        print(f"time cost: {time.time() - start_time}s")
         return {
             "result": result,
         }

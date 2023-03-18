@@ -2,7 +2,6 @@ import numpy as np
 from tensorflow import keras
 from fastapi import FastAPI, File, Form, UploadFile, HTTPException
 from PIL import Image
-from urllib import request
 from io import BytesIO
 import faiss
 import json

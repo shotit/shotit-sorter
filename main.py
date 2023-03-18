@@ -25,26 +25,36 @@ class Rearranger:
         self.length = None
 
     def init_model(self) -> None:
-        vgg16_model = keras.applications.vgg16.VGG16(
-            weights='imagenet', include_top=True)
-        model = keras.Sequential()
+        # vgg16_model = keras.applications.vgg16.VGG16(
+        #     weights='imagenet', include_top=True)
+        # model = keras.Sequential()
 
-        # Remove the last softmax layer. Only use VGG16 to extract feature vector
-        for layer in vgg16_model.layers[:-1]:
-            model.add(layer)
+        # # Remove the last softmax layer. Only use VGG16 to extract feature vector
+        # for layer in vgg16_model.layers[:-1]:
+        #     model.add(layer)
+
+        MobileNetV3Large_model = keras.applications.MobileNetV3Large(
+            include_top=True,
+            weights="imagenet",
+        )
+
+        # Remove the last softmax layer. Only use MobileNetV3Large to extract feature vector
+        x = MobileNetV3Large_model.layers[-2].output
+        model = keras.Model(inputs=MobileNetV3Large_model.input, outputs=x)
 
         # Freeze the layers
         for layer in model.layers:
             layer.trainable = False
 
+        print(model.summary())
         self.model = model
 
     def faiss_index(self, candidates) -> None:
-        dimension = 4096
+        dimension = 1000
         index = faiss.IndexFlatL2(dimension)
         self.candidates = copy.deepcopy(candidates)
         self.length = len(candidates)
-        candidateVectors = np.empty([self.length, 4096])
+        candidateVectors = np.empty([self.length, 1000])
 
         def vectorize_remote_image(index):
             url = candidates[index]["image"]
@@ -52,7 +62,7 @@ class Rearranger:
             img = Image.open(BytesIO(res)).resize((224, 224))
             x = keras.preprocessing.image.img_to_array(img)
             x = np.expand_dims(x, axis=0)
-            x = keras.applications.vgg16.preprocess_input(x)
+            x = keras.applications.mobilenet_v3.preprocess_input(x)
             features = self.model.predict(x)
             candidateVectors[index] = features
 
@@ -78,7 +88,7 @@ class Rearranger:
         self.index = index
 
     def faiss_search(self, target: bytes) -> None:
-        targetVector = np.empty([1, 4096])
+        targetVector = np.empty([1, 1000])
         img = Image.open(BytesIO(target)).resize((224, 224))
         x = keras.preprocessing.image.img_to_array(img)
         x = np.expand_dims(x, axis=0)

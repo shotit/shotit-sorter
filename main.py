@@ -125,6 +125,10 @@ async def rearrange(
     try:
         start_time = time.time()
         candidates = json.loads(candidates)
+        if len(candidates["candidates"]) <= 1:
+            return {
+                "result": candidates["candidates"]
+            }
         rearranger.faiss_index(candidates["candidates"])
         target_content = await target.read()
         result = rearranger.faiss_search(target_content)

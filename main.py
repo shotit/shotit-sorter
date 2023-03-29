@@ -16,7 +16,7 @@ nest_asyncio.apply()
 
 class Sorter:
     '''
-    Keras-Faiss section, to sort the incoming images according to their VGG16 similarity to the target image
+    Keras-Faiss section, to sort the incoming images according to their MobileNetV3Large similarity to the target image
     '''
 
     def __init__(self) -> None:

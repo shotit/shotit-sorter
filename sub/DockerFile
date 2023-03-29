@@ -1,0 +1,13 @@
+# syntax=docker/dockerfile:1
+
+FROM python:3.9.16-slim-bullseye
+ENV TINI_VERSION v0.19.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
+WORKDIR /app
+COPY ["requirements.txt", "./"]
+RUN python -m pip install -r requirements.txt
+COPY . .
+EXPOSE 19532
+CMD [ "python", "-m", "uvicorn", "main:app", "--host=0.0.0.0", "--port", "19532" ]

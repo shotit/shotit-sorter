@@ -33,8 +33,8 @@ jobs:
         if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
     - name: Configure certificates
       run: |
-        sudo apt install ca-certificates
-        sudo update-ca-certificates --fresh
+        apt install ca-certificates
+        update-ca-certificates --fresh
         export SSL_CERT_DIR=/etc/ssl/certs
     - name: Test with pytest
       run: |

@@ -31,6 +31,11 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pytest
         if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
+    - name: Configure certificates
+      run: |
+        sudo apt install ca-certificates
+        sudo update-ca-certificates --fresh
+        export SSL_CERT_DIR=/etc/ssl/certs
     - name: Test with pytest
       run: |
         python -m pytest

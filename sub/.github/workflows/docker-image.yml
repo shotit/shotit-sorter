@@ -29,7 +29,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ env.OWNER_LC }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GH_TOKEN }}
 
       - name: Set up Docker Buildx
         id: buildx
@@ -50,10 +50,10 @@ jobs:
 
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v4
         with:
           context: ./
-          file: ./Dockerfile
+          file: ./DockerFile
           push: true
           tags: |
             ${{ env.DOCKERHUB_REPOSITORY_LC }}:latest

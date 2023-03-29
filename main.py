@@ -16,7 +16,7 @@ nest_asyncio.apply()
 
 class Rearranger:
     '''
-    Keras-Faiss section, to rearrange the incoming images according to their VGG16 similarity to the target image
+    Keras-Faiss section, to sort the incoming images according to their VGG16 similarity to the target image
     '''
 
     def __init__(self) -> None:
@@ -117,8 +117,8 @@ FastAPI section, to provide http service
 app = FastAPI()
 
 
-@app.post("/rearrange")
-async def rearrange(
+@app.post("/sort")
+async def sort(
     candidates: str = Form(),
     target: UploadFile = File()
 ):

@@ -19,7 +19,7 @@ Development Guide:
 The restful endpoint:
 
 ```shell
-curl --location 'http://127.0.0.1:19532/rearrange' \
+curl --location 'http://127.0.0.1:19532/sort' \
 --form 'candidates="{
     \"candidates\": [
         {

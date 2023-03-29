@@ -14,7 +14,7 @@ import nest_asyncio
 nest_asyncio.apply()
 
 
-class Rearranger:
+class Sorter:
     '''
     Keras-Faiss section, to sort the incoming images according to their VGG16 similarity to the target image
     '''
@@ -106,8 +106,8 @@ class Rearranger:
         return results
 
 
-rearranger = Rearranger()
-rearranger.init_model()
+sorter = Sorter()
+sorter.init_model()
 
 
 '''
@@ -129,9 +129,9 @@ async def sort(
             return {
                 "result": candidates["candidates"]
             }
-        rearranger.faiss_index(candidates["candidates"])
+        sorter.faiss_index(candidates["candidates"])
         target_content = await target.read()
-        result = rearranger.faiss_search(target_content)
+        result = sorter.faiss_search(target_content)
 
         print(f"time cost: {time.time() - start_time}s")
         return {

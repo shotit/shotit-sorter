@@ -31,10 +31,9 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pytest
         if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
-    - name: Configure certificates
-      run: |
-        apt update
-        apt install openssl
     - name: Test with pytest
+      env:
+        # Fix ubuntu container not able to find local certificates
+        NODE_EXTRA_CA_CERTS: /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem       
       run: |
         python -m pytest

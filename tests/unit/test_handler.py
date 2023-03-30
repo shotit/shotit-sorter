@@ -1,25 +1,45 @@
 import uvicorn
 import httpx
 import pytest
-from multiprocessing import Process
 import os
 import time
+import contextlib
+import time
+import threading
 
 from main import app
 
 
+class Server(uvicorn.Server):
+    def install_signal_handlers(self):
+        pass
+
+    @contextlib.contextmanager
+    def run_in_thread(self):
+        thread = threading.Thread(target=self.run)
+        thread.start()
+        try:
+            while not self.started:
+                time.sleep(1e-3)
+            yield
+        finally:
+            self.should_exit = True
+            thread.join()
+
+
 def run_sorter_server():
-    uvicorn.run(app, host="0.0.0.0", port=19532, timeout_keep_alive=30)
+    config = uvicorn.Config(app,  host="0.0.0.0", port=19532,
+                            timeout_keep_alive=30,  log_level="info")
+    server = Server(config=config)
+    return server
 
 
 @pytest.fixture
 def sorter_server():
-    proc = Process(target=run_sorter_server, args=(), daemon=True)
-    proc.start()
+    server = run_sorter_server()
     print("Uvicorn server sets up")
-    time.sleep(60)
-    yield
-    proc.kill()  # Cleanup after test
+    with server.run_in_thread():
+        yield
 
 
 def test_main_sort(sorter_server):

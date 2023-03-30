@@ -32,8 +32,5 @@ jobs:
         python -m pip install pytest
         if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
     - name: Test with pytest
-      env:
-        # Fix ubuntu container not able to find local certificates
-        SSL_CERT_DIR: /etc/ssl/certs
       run: |
         python -m pytest

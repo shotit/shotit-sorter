@@ -9,7 +9,7 @@ from main import app
 
 
 def run_sorter_server():
-    uvicorn.run(app, host="0.0.0.0", port=19532)
+    uvicorn.run(app, host="0.0.0.0", port=19532, timeout_keep_alive=30)
 
 
 @pytest.fixture

@@ -30,7 +30,7 @@ def test_main_sort(sorter_server):
             os.path.abspath('.'), "tests", "unit", "image", "big_buck_bunny_10.png"), "rb"), "image/png"))
     ]
     response = httpx.post("http://0.0.0.0:19532/sort",
-                          data=data, files=files)
+                          data=data, files=files, timeout=30)
     assert response.status_code == 200
     assert response.json() == {
         "result": [

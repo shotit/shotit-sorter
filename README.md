@@ -19,42 +19,45 @@ Development Guide:
 The restful endpoint:
 
 ```shell
-curl --location 'http://127.0.0.1:19532/rearrange' \
+curl --location 'http://127.0.0.1:19532/sort' \
 --form 'candidates="{
     \"candidates\": [
         {
-            \"image\": \"https://example.com/a.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-1.png\"
         },
         {
-            \"image\": \"https://example.com/b.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-2.png\"
         },
         {
-            \"image\": \"https://example.com/c.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-3.png\"
         },
         {
-            \"image\": \"https://example.com/d.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-4.png\"
         },
         {
-            \"image\": \"https://example.com/e.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-5.png\"
         },
         {
-            \"image\": \"https://example.com/f.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-6.png\"
         },
         {
-            \"image\": \"https://example.com/g.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-7.png\"
         },
         {
-            \"image\": \"https://example.com/h.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-8.png\"
         },
         {
-            \"image\": \"https://example.com/i.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-9.png\"
         },
         {
-            \"image\": \"https://example.com/j.png\"
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-10.png\"
+        },
+        {
+            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-11.png\"
         }
     ]
 }";type=application/json' \
---form 'target=@"/D:/yourpath/example.png"'
+--form 'target=@"/D:/yourpath/big-buck-bunny-10.png"'
 ```
 
 The sorted result:
@@ -63,34 +66,37 @@ The sorted result:
 {
     result: [
         {
-            \"image\": \"https://example.com/f.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-10.png\"
         },        
         {
-            \"image\": \"https://example.com/b.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-4.png\"
         },
         {
-            \"image\": \"https://example.com/c.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-2.png\"
         },
         {
-            \"image\": \"https://example.com/d.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-9.png\"
         },
         {
-            \"image\": \"https://example.com/a.png\"
+            \"image\": \"htthttps://i.ibb.co/KGwVkqy/big-buck-bunny-7.png\"
         },        
         {
-            \"image\": \"https://example.com/e.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-8.png\"
         },
         {
-            \"image\": \"https://example.com/i.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-3.png\"
         },
         {
-            \"image\": \"https://example.com/j.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-11.png\"
         },
         {
-            \"image\": \"https://example.com/h.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-5.png\"
         },
         {
-            \"image\": \"https://example.com/g.png\"
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-6.png\"
+        },
+        {
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-1.png\"
         }        
     ]
 }

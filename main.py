@@ -14,9 +14,9 @@ import nest_asyncio
 nest_asyncio.apply()
 
 
-class Rearranger:
+class Sorter:
     '''
-    Keras-Faiss section, to rearrange the incoming images according to their VGG16 similarity to the target image
+    Keras-Faiss section, to sort the incoming images according to their MobileNetV3Large similarity to the target image
     '''
 
     def __init__(self) -> None:
@@ -106,8 +106,8 @@ class Rearranger:
         return results
 
 
-rearranger = Rearranger()
-rearranger.init_model()
+sorter = Sorter()
+sorter.init_model()
 
 
 '''
@@ -117,8 +117,8 @@ FastAPI section, to provide http service
 app = FastAPI()
 
 
-@app.post("/rearrange")
-async def rearrange(
+@app.post("/sort")
+async def sort(
     candidates: str = Form(),
     target: UploadFile = File()
 ):
@@ -129,9 +129,9 @@ async def rearrange(
             return {
                 "result": candidates["candidates"]
             }
-        rearranger.faiss_index(candidates["candidates"])
+        sorter.faiss_index(candidates["candidates"])
         target_content = await target.read()
-        result = rearranger.faiss_search(target_content)
+        result = sorter.faiss_search(target_content)
 
         print(f"time cost: {time.time() - start_time}s")
         return {

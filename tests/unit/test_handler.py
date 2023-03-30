@@ -9,7 +9,7 @@ from main import app
 
 
 def run_server():
-    uvicorn.run(app, host="127.0.0.1", port=19532)
+    uvicorn.run(app, host="0.0.0.0", port=19532)
 
 
 @pytest.fixture
@@ -29,7 +29,7 @@ def test_main_sort(server):
         ("target", ("big_buck_bunny_10.png", open(os.path.join(
             os.path.abspath('.'), "tests", "unit", "image", "big_buck_bunny_10.png"), "rb"), "image/png"))
     ]
-    response = httpx.post("http://127.0.0.1:19532/sort",
+    response = httpx.post("http://0.0.0.0:19532/sort",
                           data=data, files=files)
     assert response.status_code == 200
     assert response.json() == {

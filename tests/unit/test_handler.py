@@ -63,7 +63,7 @@ def test_main_sort_normal(sorter_server):
 def test_main_sort_single(sorter_server):
     print("Uvicorn server does set up", sorter_server)
     data = {
-        "candidates": '{"candidates": [{"image": "https://i.ibb.co/J7v6p24/big-buck-bunny-10.png"}]}'}
+        "candidates": '{"candidates": [{"image": "https://i.ibb.co/KGwVkqy/big-buck-bunny-10.png"}]}'}
     files = [
         ("target", ("big_buck_bunny_10.png", open(os.path.join(
             os.path.abspath('.'), "tests", "unit", "image", "big_buck_bunny_10.png"), "rb"), "image/png"))

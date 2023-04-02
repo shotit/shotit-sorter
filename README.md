@@ -1,5 +1,14 @@
 # Shotit-sorter
 
+
+[![License](https://img.shields.io/github/license/shotit/shotit-sorter.svg?style=flat-square)](https://github.com/shotit/shotit-sorter/blob/master/LICENSE)
+[![Coverage](https://img.shields.io/codecov/c/github/shotit/shotit-sorter/main.svg?style=flat)](https://app.codecov.io/gh/shotit/shotit-sorter/branch/main)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/shotit/shotit-sorter/docker-image.yml?branch=main&style=flat-square)](https://github.com/shotit/shotit-sorter/actions)
+[![Docker](https://img.shields.io/docker/pulls/lesliewong007/shotit-sorter?style=flat-square)](https://hub.docker.com/r/lesliewong007/shotit-sorter)
+[![Docker Image Size](https://img.shields.io/docker/image-size/lesliewong007/shotit-sorter/latest?style=flat-square)](https://hub.docker.com/r/lesliewong007/shotit-sorter)
+
+
+
 Sort the search results of Shotit to increase the correctness of Top1 result by using Keras and Faiss.
 
 Development Guide:

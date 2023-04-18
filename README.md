@@ -12,9 +12,15 @@
 
 Sort the search results of Shotit to increase the correctness of Top1 result by using Keras and Faiss.
 
-Development Guide:
+### Docker Guide:
 
-> \> python -m venv venv 
+> \> docker pull ghcr.io/shotit/shotit-sorter:v0.9.1
+>
+> \> docker run --name my-shotit-sorter -p 19532:19532 ghcr.io/shotit/shotit-sorter:v0.9.1
+
+### Local Development Guide:
+
+> \> python -m venv venv
 >
 > \> cd venv/Scripts
 >
@@ -26,8 +32,17 @@ Development Guide:
 >
 > \> python -m uvicorn main:app --port 19532
 
-The restful endpoint:
+### Restful API call:
 
+> POST http://127.0.0.1:19532/sort
+
+| parameters | structure | content-type |
+| ---- | ---- | ---- |
+| candidates | {"candidates": [{"image": "url"}]} | application/json |
+| target | Blob \|\| Stream | - |
+
+
+#### curl: 
 ```shell
 curl --location 'http://127.0.0.1:19532/sort' \
 --form 'candidates="{
@@ -36,77 +51,77 @@ curl --location 'http://127.0.0.1:19532/sort' \
             \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-1.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-2.png\"
+            \"image\": \"https://i.ibb.co/HHJPP3R/big-buck-bunny-2.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-3.png\"
+            \"image\": \"https://i.ibb.co/LPR0gb7/big-buck-bunny-3.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-4.png\"
+            \"image\": \"https://i.ibb.co/qnwfks9/big-buck-bunny-4.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-5.png\"
+            \"image\": \"https://i.ibb.co/56nvNHD/big-buck-bunny-5.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-6.png\"
+            \"image\": \"https://i.ibb.co/jM3657F/big-buck-bunny-6.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-7.png\"
+            \"image\": \"https://i.ibb.co/ZhDQshx/big-buck-bunny-7.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-8.png\"
+            \"image\": \"https://i.ibb.co/0h5gD7y/big-buck-bunny-8.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-9.png\"
+            \"image\": \"https://i.ibb.co/XV54Rk7/big-buck-bunny-9.png\"
         },
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-10.png\"
-        },
+            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-10.png\"
+        }, 
         {
-            \"image\": \"https://i.ibb.co/JCj5T41/big-buck-bunny-11.png\"
+            \"image\": \"https://i.ibb.co/J7v6p24/big-buck-bunny-11.png\"
         }
     ]
 }";type=application/json' \
 --form 'target=@"/D:/yourpath/big-buck-bunny-10.png"'
 ```
 
-The sorted result:
+### The sorted result:
 
 ```shell
 {
     result: [
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-10.png\"
+            "image": "https://i.ibb.co/KGwVkqy/big-buck-bunny-10.png"
         },        
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-4.png\"
+            "image": "https://i.ibb.co/qnwfks9/big-buck-bunny-4.png"
         },
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-2.png\"
+            "image": "https://i.ibb.co/HHJPP3R/big-buck-bunny-2.png"
         },
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-9.png\"
+            "image": "https://i.ibb.co/XV54Rk7/big-buck-bunny-9.png"
         },
         {
-            \"image\": \"htthttps://i.ibb.co/KGwVkqy/big-buck-bunny-7.png\"
+            "image": "https://i.ibb.co/ZhDQshx/big-buck-bunny-7.png"
         },        
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-8.png\"
+            "image": "https://i.ibb.co/0h5gD7y/big-buck-bunny-8.png"
         },
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-3.png\"
+            "image": "https://i.ibb.co/LPR0gb7/big-buck-bunny-3.png"
         },
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-11.png\"
+            "image": "https://i.ibb.co/J7v6p24/big-buck-bunny-11.png"
         },
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-5.png\"
+            "image": "https://i.ibb.co/56nvNHD/big-buck-bunny-5.png"
         },
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-6.png\"
+            "image": "https://i.ibb.co/jM3657F/big-buck-bunny-6.png"
         },
         {
-            \"image\": \"https://i.ibb.co/KGwVkqy/big-buck-bunny-1.png\"
+            "image": "https://i.ibb.co/JCj5T41/big-buck-bunny-1.png"
         }        
     ]
 }

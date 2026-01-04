@@ -6,7 +6,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/shotit/shotit-sorter/docker-image.yml?branch=main&style=flat-square)](https://github.com/shotit/shotit-sorter/actions)
 [![GitHub release](https://img.shields.io/github/release/shotit/shotit-sorter.svg)](https://github.com/shotit/shotit-sorter/releases/latest)
 [![Docker](https://img.shields.io/docker/pulls/lesliewong007/shotit-sorter?style=flat-square)](https://hub.docker.com/r/lesliewong007/shotit-sorter)
-[![Docker Image Size](https://img.shields.io/docker/image-size/lesliewong007/shotit-sorter/v0.9.3?style=flat-square)](https://hub.docker.com/r/lesliewong007/shotit-sorter)
+[![Docker Image Size](https://img.shields.io/docker/image-size/lesliewong007/shotit-sorter/v0.9.4?style=flat-square)](https://hub.docker.com/r/lesliewong007/shotit-sorter)
 
 
 
@@ -14,9 +14,9 @@ Sort the search results of Shotit to increase the correctness of Top1 result by 
 
 ### Docker Guide:
 
-> \> docker pull ghcr.io/shotit/shotit-sorter:v0.9.3
+> \> docker pull ghcr.io/shotit/shotit-sorter:v0.9.4
 >
-> \> docker run --name my-shotit-sorter -p 19532:19532 ghcr.io/shotit/shotit-sorter:v0.9.3
+> \> docker run --name my-shotit-sorter -p 19532:19532 ghcr.io/shotit/shotit-sorter:v0.9.4
 
 ### Local Development Guide:
 

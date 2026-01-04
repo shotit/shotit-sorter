@@ -10,5 +10,5 @@ pytest-cov==4.0.0
 pytest-mock==3.10.0
 python-multipart==0.0.6
 numpy==1.23.5
-tensorflow==2.11.1
+tensorflow==2.20.0
 uvicorn==0.21.0

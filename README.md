@@ -5,8 +5,8 @@
 [![Coverage](https://img.shields.io/codecov/c/github/shotit/shotit-sorter/main.svg?style=flat)](https://app.codecov.io/gh/shotit/shotit-sorter/branch/main)
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/shotit/shotit-sorter/docker-image.yml?branch=main&style=flat-square)](https://github.com/shotit/shotit-sorter/actions)
 [![GitHub release](https://img.shields.io/github/release/shotit/shotit-sorter.svg)](https://github.com/shotit/shotit-sorter/releases/latest)
-[![Docker](https://img.shields.io/docker/pulls/lesliewong007/shotit-sorter?style=flat-square)](https://hub.docker.com/r/lesliewong007/shotit-sorter)
-[![Docker Image Size](https://img.shields.io/docker/image-size/lesliewong007/shotit-sorter/v0.9.6?style=flat-square)](https://hub.docker.com/r/lesliewong007/shotit-sorter)
+[![Docker](https://img.shields.io/docker/pulls/shotit/shotit-sorter?style=flat-square)](https://hub.docker.com/r/shotit/shotit-sorter)
+[![Docker Image Size](https://img.shields.io/docker/image-size/shotit/shotit-sorter/v0.9.7?style=flat-square)](https://hub.docker.com/r/shotit/shotit-sorter)
 
 
 
@@ -14,9 +14,9 @@ Sort the search results of Shotit to increase the correctness of Top1 result by 
 
 ### Docker Guide:
 
-> \> docker pull ghcr.io/shotit/shotit-sorter:v0.9.6
+> \> docker pull ghcr.io/shotit/shotit-sorter:v0.9.7
 >
-> \> docker run --name my-shotit-sorter -p 19532:19532 ghcr.io/shotit/shotit-sorter:v0.9.6
+> \> docker run --name my-shotit-sorter -p 19532:19532 ghcr.io/shotit/shotit-sorter:v0.9.7
 
 ### Local Development Guide:
 

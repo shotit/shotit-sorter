@@ -37,7 +37,8 @@ class Sorter:
 
         MobileNetV3Large_model = keras.applications.MobileNetV3Large(
             include_top=True,
-            weights="imagenet",
+            # weights="imagenet",
+            weights="./weights/weights_mobilenet_v3_large_224_1.0_float.h5"
         )
 
         # Remove the last softmax layer. Only use MobileNetV3Large to extract feature vector
